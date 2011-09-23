@@ -19,7 +19,7 @@ smallbox = (function(){
     /*
      * Private Properties
      */
-
+    //Yes I know multiple var declarations is technically a waste, but it's minimal and this is easier to read.
     var content;
 
     /*
