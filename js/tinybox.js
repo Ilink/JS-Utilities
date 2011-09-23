@@ -20,7 +20,6 @@ smallbox = (function(){
      * Private Properties
      */
 
-    var self = this;
     var content;
 
     /*
