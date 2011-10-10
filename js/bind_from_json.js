@@ -29,3 +29,7 @@ var bind_from_json = function(json){
             $(json[i].selector).bind(json[i].bind_to, json[i].func);
     }
 }
+
+$(document).ready(function(){
+    bind_from_json(json)
+});
