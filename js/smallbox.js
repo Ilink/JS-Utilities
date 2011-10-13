@@ -17,14 +17,11 @@
 
 var smallbox = (function(){
     /*
-     * Private Properties
+     * Private
      */
-    //Yes I know multiple var declarations is technically a waste, but it's minimal and this is easier to read.
+    
+    //Multiple var declarations is technically a waste, but it's minimal and this is easier to read.
     var content;
-
-    /*
-     * Private Members
-     */
     
     var create_box = function()
     {
@@ -83,10 +80,3 @@ var smallbox = (function(){
         }
     }
 })();
-
-$(document).ready(function()
-{
-    $('#open_box').click(function(){
-        smallbox.init($('#content'));
-    });
-});
