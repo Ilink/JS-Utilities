@@ -16,8 +16,11 @@
  *  Version 0.1: Initial commit
  *  
  -----------------------------------------------------------------------------------*/
+if (typeof jsUtil === 'undefined'){
+    var jsUtil = {};
+}
 
-var bind_from_json = function(json){
+jsUtil.bind_from_json = function(json){
     for(var i = 0; i < json.length; i++){
         if(typeof json[i].selector !== 'string'
             || typeof json[i].bind_to !== 'string'
@@ -29,7 +32,3 @@ var bind_from_json = function(json){
             $(json[i].selector).bind(json[i].bind_to, json[i].func);
     }
 }
-
-$(document).ready(function(){
-    bind_from_json(json)
-});

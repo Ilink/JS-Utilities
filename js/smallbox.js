@@ -11,11 +11,16 @@
  *  
  *  Changelog:
  *  
+ *  10/14/11: Added namespacing
  *  Version 0.1: Initial commit
  *  
  -----------------------------------------------------------------------------------*/
 
-var smallbox = (function(){
+if (typeof jsUtil === 'undefined'){
+    var jsUtil = {};
+}
+
+jsUtil.smallbox = (function(){
     /*
      * Private
      */
@@ -65,7 +70,7 @@ var smallbox = (function(){
         });
     }
     
-    //Public Members
+    //Public
     return {
         init:function(node)
         {

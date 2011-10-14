@@ -19,6 +19,7 @@ var json = [{
 $(document).ready(function()
 {
     $('#open_box').click(function(){
-        smallbox.init($('#content'));
+        jsUtil.smallbox.init($('#content'));
     });
+    jsUtil.bind_from_json(json)
 });
