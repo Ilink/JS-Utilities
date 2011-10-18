@@ -7,7 +7,7 @@
  *      var json = [{
  *          'selector' : '#id',
  *          'bind_to' : 'click',
- *          'functions' : [
+ *          'func' : [
  *				func1,
  *				func2
  *			]
@@ -33,17 +33,26 @@ jsUtil.bind_from_json = function(json){
 			throw "Error in supplied JSON at index "+ i + ". Expects 'Selector' as String";
 		}
 		if (typeof json[i].bind_to !== 'string'){
-			throw "Error in supplied JSON at index "+ i + ". Expects 'Bind_to as String"; 
+			throw "Error in supplied JSON at index "+ i + ". Expects 'Bind_to as String";
 		}
 		else {
-			for (var j = 0; j < json[i].functions.length; j++){
-				if (typeof json[i].functions[j] !== 'function'){
-					throw "Error in supplied JSON at index " + i + ". Expects 'Functions' to be functions. The " + j + "th entry for 'functions' is not a function";
+			if (json[i].func.length > 0) {
+				for (var j = 0; j < json[i].func.length; j++){
+					if (typeof json[i].func[j] !== 'function'){
+						throw "Error in supplied JSON at index " + i + ". Expects 'func' to be functions. The " + j + "th entry for 'functions' is not a function";
+					}
+					else {
+						$(json[i].selector).bind(json[i].bind_to, json[i].func[j]);
+					}
+                }
+            }
+			else {
+				if (typeof json[i].func !== 'function'){
+					throw "Error in supplied JSON at index " + i + ". Expects 'func' to be a function.";
 				}
-				else {
-					$(json[i].selector).bind(json[i].bind_to, json[i].functions[j]);
-				}
+				else
+					$(json[i].selector).bind(json[i].bind_to, json[i].func);
 			}
 		}
     }
-};
+}
