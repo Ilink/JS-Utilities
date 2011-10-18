@@ -7,13 +7,19 @@
  *      var json = [{
  *          'selector' : '#id',
  *          'bind_to' : 'click',
- *          'func' : function
+ *          'functions' : [
+ *				func1,
+ *				func2
+ *			]
  *      }];
  *  Note that you can include any valid jquery selector or combination of selectors
  *  
  *  Changelog:
  *  
- *  Version 0.1: Initial commit
+ *	Version 0.2: Added support for binding to multiple functions
+ *		- Better error reporting for type-checking errors
+ *  
+ *	Version 0.1: Initial commit
  *  
  -----------------------------------------------------------------------------------*/
 if (typeof jsUtil === 'undefined'){
@@ -21,14 +27,23 @@ if (typeof jsUtil === 'undefined'){
 }
 
 jsUtil.bind_from_json = function(json){
-    for(var i = 0; i < json.length; i++){
-        if(typeof json[i].selector !== 'string'
-            || typeof json[i].bind_to !== 'string'
-            || typeof json[i].func !== 'function'){
-                throw 'Error in supplied JSON at index '+ i +
-                '. Expects "Selector" as String, "Bind_to" as String and "Func" as Function';
-        }
-        else
-            $(json[i].selector).bind(json[i].bind_to, json[i].func);
+	"use strict";
+    for (var i = 0; i < json.length; i++){
+		if (typeof json[i].selector !== 'string'){
+			throw "Error in supplied JSON at index "+ i + ". Expects 'Selector' as String";
+		}
+		if (typeof json[i].bind_to !== 'string'){
+			throw "Error in supplied JSON at index "+ i + ". Expects 'Bind_to as String"; 
+		}
+		else {
+			for (var j = 0; j < json[i].functions.length; j++){
+				if (typeof json[i].functions[j] !== 'function'){
+					throw "Error in supplied JSON at index " + i + ". Expects 'Functions' to be functions. The " + j + "th entry for 'functions' is not a function";
+				}
+				else {
+					$(json[i].selector).bind(json[i].bind_to, json[i].functions[j]);
+				}
+			}
+		}
     }
-}
+};
