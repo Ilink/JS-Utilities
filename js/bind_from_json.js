@@ -12,6 +12,10 @@
  *				func2
  *			]
  *      }];
+ *
+ *	Call the function:
+ *		jsUtil.bind_from_json(json)
+ *	
  *  Note that you can include any valid jquery selector or combination of selectors
  *  
  *  Changelog:
