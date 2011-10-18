@@ -20,6 +20,14 @@ Utilizes jQuery's 'Bind' function in conjunction with JSON. Simply setup a JSON 
 	 			]
 	       }];
 
+Or if you only want to bind to one function:
+
+	var json = [{
+	           'selector' : '#id',
+	           'bind_to' : 'click',
+	           'func' : func1
+	       }];
+
 Then call the bind function using your JSON:
 
 	jsUtil.bind_from_json(json)
