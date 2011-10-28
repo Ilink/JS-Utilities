@@ -42,7 +42,6 @@ jsUtil.bind_from_json = function(json){
 			throw "Error in supplied JSON at index "+ i + ". Expects 'Bind_to as String";
 		}
 		else {
-//			if (typeof json[i].func.length > 0) {
             if (json[i].hasOwnProperty('func')) {
                 if (typeof json[i].func == 'object') {
                     for (var j = 0; j < json[i].func.length; j++){
