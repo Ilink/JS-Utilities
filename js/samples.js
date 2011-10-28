@@ -5,7 +5,10 @@ var test = function(){
 var json = [{
            'selector' : '#test',
            'bind_to' : 'click',
-           'func' : test
+           'func' : [
+				test, 
+				test
+				]
            },
            {
            'selector' : '#test2',
