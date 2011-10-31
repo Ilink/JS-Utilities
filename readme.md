@@ -33,3 +33,5 @@ Then call the bind function using your JSON:
 	jsUtil.bind_from_json(json)
 	
 Alternatively, the JSON values could already exist on the page, perhaps in a hidden field. In that case, one could simply use jQuery to grab the data.
+
+Future Releases will include ways to bind from specific parts of JSON input.
